@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission 4 — Pilotage d'un projet de supervision LoRa | Portfolio Romain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="entreprise.html">Entreprise</a></li>
+      <li><a class="active" href="missions.html">Missions</a></li>
+      <li><a href="bilan-global.html">Bilan général</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <section class="hero" style="padding-bottom:2.2rem;">
+    <div class="hero-badge">Mission 4</div>
+    <h1>Pilotage d'un projet de supervision LoRa pour des bornes d'appel d'urgence</h1>
+    <p>Coordination d'un projet de supervision à distance des bornes d'urgence du chantier via technologie LoRa, de la phase de cadrage à la mise en œuvre pilote.</p>
+
+    <div class="tags">
+      <a class="tag" href="#situation">Situation</a>
+      <a class="tag" href="#realisation">Réalisation</a>
+      <a class="tag" href="#ac">AC</a>
+      <a class="tag" href="#traces">Traces</a>
+      <a class="tag" href="#analyse">Analyse</a>
+      <a class="tag" href="missions.html">← Retour missions</a>
+    </div>
+  </section>
+
+  <section id="situation" class="card">
+    <h2>Situation professionnelle, objectifs et contraintes</h2>
+    <p>
+      Sur le chantier EPR2 de Penly, les bornes d'appel d'urgence constituent un système de communication critique au même titre que la sonorisation. Elles permettent d'effectuer des appels d'urgence et aussi la diffusion de messages de sonorisation. Actuellement pour superviser ces bornes (vérification du bon fonctionnement, vérification du niveau de batterie etc.) nous sommes obligés d'effectuer des contrôles physiques réguliers, ce qui nous oblige à nous déplacer fréquemment sur l'ensemble du chantier pour vérifier que les bornes fonctionnent correctement. Cette mission a duré 6 mois de juillet à l'heure actuelle et devrait s'achever au mois de mi-février.
+    </p>
+    <p>
+      L'objectif de cette mission est de mettre en place un système de supervision à distance via une technologie de communication LoRa pour permettre la remontée automatique d'informations sur un ordinateur de supervision comme l'état de la batterie, le bon fonctionnement de la borne, si la borne a été déclenchée avec un horodatage. Ce projet sur Penly a pour objectif de déployer cette nouvelle version de borne sur d'autres chantiers EPR2 par la suite.
+    </p>
+
+    <div class="callout" style="margin-top:1rem;">
+      <strong>Objectif :</strong> mettre en place un système de remontée automatique des informations des bornes d'urgence via LoRa.
+      <br/><strong>Mon rôle :</strong> chef de projet, avec l'accompagnement de mon tuteur pour la validation des décisions et pour m'aider sur les points complexes.
+      <br/><strong>Contraintes :</strong> la principale contrainte et difficulté est la coordination de plusieurs acteurs que ce soit fournisseur, experts IoT, équipe cybersécurité.
+    </div>
+  </section>
+
+  <section id="realisation" class="card" style="margin-top:1.2rem;">
+    <h2>Réalisation et pilotage du projet</h2>
+
+    <h3 style="margin-top:.6rem;">Cadrage et expression des besoins (juillet 2025)</h3>
+    <p>
+      En juillet, j'ai organisé une première réunion de cadrage et de lancement de ce projet avec le fournisseur des bornes et les experts IoT EDF. L'objectif était d'exprimer précisément nos besoins pour que le fournisseur puisse proposer une solution adaptée. Les besoins exprimés concernaient la remontée de plusieurs informations : l'état de la batterie de la borne, la vérification du bon fonctionnement de la borne en envoyant des messages à intervalle régulier, un message de détection d'activation de la borne pour un appel d'urgence. En cas d'activation, nous recevrons un message avec l'heure d'activation, la date, le service appelé (17/18 interne) et les coordonnées de la borne.
+    </p>
+
+    <h3>Choix de la solution technique LoRa</h3>
+    <p>
+      La solution retenue a été d'utiliser le module de communication LoRa qui était déjà intégré dans la carte CPU interne. LoRa est une technologie de communication qui utilise très peu de batterie, ce qui était un des atouts principaux car les bornes fonctionnent sur batterie avec un rechargement par énergie solaire. En plus de ça, il y avait déjà des passerelles LoRa installées sur le chantier donc on pouvait les réutiliser, ce qui évitait d'avoir à déployer une nouvelle infrastructure complète.
+    </p>
+
+    <h3>Coordination du projet et gestion des acteurs</h3>
+    <p>
+      Mon rôle dans ce projet était assez différent des missions précédentes. Ici je ne touchais absolument pas à la partie technique, je ne participais pas vraiment aux réflexions avec les équipes sur l'architecture LoRa, je n'ai rien configuré. Mon rôle est d'organiser les réunions, de coordonner les différents interlocuteurs : fournisseur, experts IoT, équipe cybersécurité, de gérer les échanges mails et de m'assurer que le projet avançait. Je devais faire en sorte de synchroniser et de faire communiquer chaque partie du projet.    </p>
+
+    <h3>Gestion de l'analyse de risque</h3>
+    <p>
+      Une difficulté est apparue quand l'équipe IoT nous a demandé de réaliser une analyse de risque cybersécurité et une qualification avant de pouvoir déployer la solution. Au départ, on pensait que ce n'était pas nécessaire car les données remontées (état batterie, déclenchements) ne sont pas des données sensibles. Cela a ralenti le projet car il a fallu organiser des réunions spécifiques avec une experte cybersécurité EDF. Le jeudi 27 novembre, nous avons fait cette analyse de risque qui a montré qu'il n'y avait quasiment aucun risque parmi tous ceux évoqués.
+    </p>
+
+    <h3>État d'avancement actuel</h3>
+    <p>
+      Récemment, le fournisseur a commencé à déployer le nouveau programme dans des bornes de test dans son atelier. Les premiers tests montrent que les bornes arrivent bien à remonter les informations vers le système de supervision. Par la suite il faudra qu'il vienne sur site pour déployer cette mise à jour logicielle sur toutes les bornes.
+    </p>
+  </section>
+
+  <section id="ac" class="card" style="margin-top:1.2rem;">
+    <h2>Apprentissages Critiques (AC) mobilisés</h2>
+    <p class="small-muted">
+      Cette mission de pilotage de projet mobilise des AC de semestre 3 et 1, correspondant à la coordination d'équipes et à la gestion de projet technique.
+    </p>
+
+    <div class="ac-grid" style="margin-top:1rem;">
+      <div class="ac-item">
+        <h5>AC22.05 — Capacité à questionner un cahier des charges R&T</h5>
+        <p>
+          Expression des besoins de supervision auprès du fournisseur et des experts IoT lors de la réunion de cadrage. Définition des critères techniques nécessaires (remontée état batterie, alarmes avec localisation et horodatage). Arbitrage sur le choix de la solution LoRa en fonction des contraintes du chantier (autonomie batterie, réutilisation des passerelles existantes).
+        </p>
+      </div>
+
+      <div class="ac-item">
+        <h5>AC21.06 — Travailler en équipe pour développer ses compétences professionnelles</h5>
+        <p>
+          Coordination avec plusieurs interlocuteurs tout au long du projet. En premier lieu le fournisseur des bornes pour l'expression des besoins et le suivi des tests en atelier, ensuite les experts IoT EDF pour la validation technique de la solution, puis l'équipe cybersécurité pour la réalisation de l'analyse de risque. Organisation et animation des réunions de suivi.
+        </p>
+      </div>
+
+      <div class="ac-item">
+        <h5>AC24.01 — Connaître et utiliser les bonnes pratiques de cybersécurité</h5>
+        <p>
+          Coordination de l'analyse de risque cybersécurité demandée par l'équipe IoT. Organisation de la session d'analyse avec l'experte cyber EDF le 27 novembre. Validation que les risques identifiés étaient minimes pour ce type de données non sensibles, tout en respectant les processus qualité imposés.
+<section id="traces" class="card" style="margin-top:1.2rem;">
+    <h2>Traces & preuves (sélection justifiée)</h2>
+    <p>
+      Pour cette mission de pilotage, les preuves retenues visent à démontrer mon rôle de coordination et de gestion du projet plutôt que des livrables techniques.
+    </p>
+
+    <div class="trace">
+      <h3>Trace 1 — Comptes rendus de réunions</h3>
+      <p class="small-muted">
+        Comptes rendus des réunions de cadrage (juillet) et de suivi avec le fournisseur et les experts IoT, montrant l'expression des besoins et le suivi des décisions techniques tout au long du projet.
+      </p>
+    </div>
+
+    <div class="trace">
+      <h3>Trace 2 — Document d'analyse de risque cybersécurité</h3>
+      <p class="small-muted">
+        Résultat de l'analyse de risque réalisée le 27 novembre 2025 avec l'experte cyber EDF, démontrant la prise en compte des enjeux de sécurité et la validation de la solution malgré le caractère non sensible des données.
+      </p>
+    </div>
+  </section>
+
+  <section id="analyse" class="card" style="margin-top:1.2rem;">
+    <h2>Analyse réflexive & autoévaluation</h2>
+    <p>
+      Cette mission m'a confronté à un type d'activité assez différent des missions précédentes. Sur les missions 1, 2 et 3, j'étais en plein milieu de la technique. Je configurais les switchs, je déployais les fibres, je diagnostiquais des problèmes. Ici, je ne touche presque pas à la partie technique. Mon rôle est de coordonner les différents acteurs pour faire avancer le projet, ce qui est nouveau pour moi.
+    </p>
+
+    <h3 style="color:var(--accent);margin-top:1.2rem;">Difficultés rencontrées</h3>
+    <p>
+      <strong>Changement de rôle.</strong> Au début, j'ai trouvé ça un peu frustrant de ne pas être dans la technique. Je ne réfléchissais pas avec les équipes sur l'architecture LoRa, je ne configurais pas non plus les technologies choisies. J'avais l'impression de ne pas faire quelque chose de concret. Ça m'a surpris car je m'attendais à une mission plus axée vers la technique. J'ai dû m'adapter à ce nouveau rôle de chef de projet plutôt que de technicien sur terrain.
+    </p>
+    <p>
+      <strong>Demande d'études non anticipée.</strong> L'équipe IoT nous a demandé une analyse de risque cybersécurité et une qualification avant déploiement. Au départ, nous pensions que ce n'était pas nécessaire car les données remontées ne sont pas sensibles. Cela a ralenti le projet et nécessité d'organiser une réunion spécifique avec une experte cyber. L'analyse du 27 novembre a confirmé qu'il n'y avait quasiment aucun risque, mais ça m'a montré l'importance de respecter les processus établis même quand on pense qu'ils ne sont pas nécessaires et également de bien définir les besoins de chaque équipe au lancement du projet.
+    </p>
+    <p>
+      <strong>Ralentissement estival. </strong> Entre juillet et septembre, le projet a été ralenti par les congés d'été de plusieurs interlocuteurs (fournisseur, experts IoT). Je n'avais pas anticipé cet impact sur le planning.
+    </p>
+
+    <h3 style="color:var(--accent);margin-top:1.2rem;">Ce que j'ai appris</h3>
+    <p>
+      Au début, je pensais que sans configurer ou déployer, je ne faisais rien de concret. Mais j'ai compris que piloter un projet sans être dans l'exécution technique est une partie tout autant voire plus importante. Sans coordination, les experts IoT et le fournisseur ne peuvent pas travailler ensemble efficacement. Mon rôle était de faire en sorte que les bonnes personnes travaillent ensemble au bon moment avec les bonnes informations. C'est différent de mes missions précédentes, mais c'est tout aussi essentiel au bon fonctionnement d'un projet.
+    </p>
+    <p>
+      Même si je n'étais pas en charge de la configuration du système LoRa, j'ai dû comprendre les principes de ce réseau pour pouvoir piloter le projet efficacement. J'ai notamment appris que la technologie LoRa repose sur une modulation à étalement de spectre, permettant de faire des communications sur de grandes distances avec une très faible consommation d'énergie, ce qui correspondait aux contraintes des bornes fonctionnant sur batterie. Cette compréhension m'a permis d'échanger et d'avoir une vision plus technique avec le fournisseur et les experts IoT, et de mieux comprendre les limites et les usages possibles de cette solution.
+    </p>
+    <p>
+      Mon tuteur m'a laissé gérer le projet en autonomie tout en restant disponible pour valider mes décisions et m'aider sur des points complexes, comme la coordination avec l'équipe cybersécurité. Cette approche m'a permis de prendre mes responsabilités et mon autonomie tout en ayant une sécurité, ce qui était rassurant pour une première expérience de gestion de projet.
+    </p>
+
+    <h3 style="color:var(--accent);margin-top:1.2rem;">Axes d'amélioration</h3>
+    <p>
+      Avec le recul, j'aurais dû mieux anticiper certaines contraintes qui ont ralenti le projet. J'aurais aussi pu identifier plus tôt les processus obligatoires comme la qualification au niveau cybersécurité et l'analyse de risque pour les intégrer directement au planning plutôt que de les découvrir en cours de route.
+    </p>
+    <ul style="margin-left:1.5rem;color:var(--text-secondary);line-height:1.8;">
+      <li>Anticiper les contraintes de planning liées aux congés et périodes creuses pour éviter les ralentissements</li>
+      <li>Approfondir mes connaissances techniques sur la technologie LoRa pour mieux comprendre les enjeux techniques même si je ne suis pas dans l'exécution</li>
+      <li>Identifier tous les processus obligatoires au début du projet pour les intégrer dès le départ au planning</li>
+    </ul>
+
+    <div class="callout" style="margin-top:1rem;">
+      <strong>Auto-positionnement :</strong>
+      <ul style="margin:.6rem 0 0;">
+        <li><strong>Acquis :</strong> coordination de plusieurs interlocuteurs, organisation de réunions de cadrage et de suivi, gestion des échanges projet, synchronisation des différentes parties.</li>
+        <li><strong>En cours de consolidation :</strong> anticipation des contraintes (congés, processus), gestion des processus cybersécurité.</li>
+        <li><strong>À développer :</strong> mieux maîtriser la technique au niveau IoT/LoRa, la gestion de planning avec les contraintes et l'identification des processus obligatoires.</li>
+      </ul>
+    </div>
+
+    <div class="tags" style="margin-top:1.1rem;">
+      <a class="tag" href="mission-3.html">← Mission 3</a>
+      <a class="tag" href="missions.html">Retour missions</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>Mission 4 — Projet LoRa & supervision</p>
+  <p style="margin-top:.4rem;font-size:.85rem;">© 2025–2026</p>
+</footer>
+
+</body>
+</html>

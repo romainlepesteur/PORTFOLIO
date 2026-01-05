@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission 1 — Réseau sonorisation IP isolé | Portfolio Romain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="entreprise.html">Entreprise</a></li>
+      <li><a class="active" href="missions.html">Missions</a></li>
+      <li><a href="bilan-global.html">Bilan général</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="container">
+    <section class="hero" style="padding-bottom:2.2rem;">
+      <div class="hero-badge">Mission 1</div>
+      <h1>Création d'un réseau isolé pour le système de sonorisation du chantier</h1>
+      <p>Réseau "à plat" dédié pour la sonorisation : l'objectif : trouver une solution rapide pour permettre l'utilisation de ce système tout en garantissant la sécurité du réseau.</p>
+
+      <div class="tags">
+        <a class="tag" href="#situation">Situation</a>
+        <a class="tag" href="#realisation">Réalisation</a>
+        <a class="tag" href="#ac">AC</a>
+        <a class="tag" href="#traces">Traces</a>
+        <a class="tag" href="#analyse">Analyse</a>
+        <a class="tag" href="missions.html">← Retour aux missions</a>
+      </div>
+    </section>
+
+    <section id="situation" class="card">
+      <h2>Situation professionnelle, objectifs, contraintes</h2>
+      <p>
+        Cette mission s’est déroulée au début de ma première année d'alternance chez EDF, sur le chantier EPR2 de Penly, durant 3 semaines, du 30 décembre 2024 au 10 janvier 2025.
+        Sur site, la sonorisation est le moyen principal de communication et d’alerte (annonces sécurité, consignes d'évacuation etc). C’est un système critique, si le service cesse de fonctionner, l’impact et très important sur l'ensemble du chantier.
+      </p>
+      <p>
+        Des vulnérabilités de cybersécurité ont été identifiées sur le système de gestion de la sonorisation
+        (détails non communiqués). La décision des experts réseau EDF a été de déconnecter tous les équipements de sonorisation des réseaux informatiques EDF et de mettre en place un réseau dédié qui est isolé de tout autre réseau informatique le temps que le fournisseur corrige ces failles et de faire en sorte de ne pas les exposer vers l'extérieur.
+      </p>
+
+      <div class="callout" style="margin-top:1rem;">
+        <strong>Objectif :créer un réseau “à plat" dédié pour la sonorisation (pas d’Internet, pas de lien vers les réseaux EDF du chantier et pas de liens vers "l'extérieur") tout en gardant le service de sonorisation disponible.
+        <br/><strong>Contraintes :</strong> <span class="inline-code">pas de coupure possible</span>, déploiement local (pas de télé-exploitation) et matériel à prévoir / installer.
+      </div>
+    </section>
+    <section id="realisation" class="card" style="margin-top:1.2rem;">
+      <h2>Réalisation technique</h2>
+
+      <h3 style="margin-top:.6rem;">Architecture déployée</h3>
+      <p>
+        Le choix des architectes réseau a été d'opter pour une topologie en étoile : ici nous disposons d'un switch concentrateur et des switchs de distributions raccordés dessus en fibre. L’idée était d’avoir une infrastructure simple, rapide à mettre en œuvre et facile à exploiter sur place.
+      </p>
+
+      <h3>Configuration & mise en service</h3>
+      
+<p>
+  Comme le réseau est isolé et donc pas télé-exploité, j'ai réalisé toute la mission localement, en 3 phases.
+</p>
+
+<h4>Phase 1 : Préparation et commande du matériel(2 semaines)</h4>
+<p>
+  J'ai d'abord pris contact avec les architectes réseau pour obtenir un plan de configuration détaillé. 
+  En parallèle, nous avons commandé le matériel nécessaire : switchs Aruba de niveau 2 (switchs L2 qui font uniquement de la commutation, pas de routage), modules SFP+ pour les liaisons fibre, et câbles optiques pour les cheminements entre bâtiments.
+</p>
+
+<h4>Phase 2 : Configuration des équipements (environ 1 semaine)</h4>
+<p>
+  Une fois le matériel reçu, j'ai configuré tous les switchs en ligne de commande (CLI) via SSH avec le logiciel PuTTY. 
+  Cette configuration incluait la création du VLAN dédié pour la sonorisation, l'assignation des adresses IP de management à chaque switch, 
+ la configuration des ports en mode access pour les équipements finaux ou en mode trunk pour les liaisons vers le switch concentrateur, 
+  et la fermeture des ports inutilisés pour éviter le risque d'intrusion physique.
+</p>
+<p>
+  Cette phase de configuration a duré environ une semaine, incluant les tests de validation et la résolution de l'incident SFP.
+</p>
+
+<h4>Phase 3 : Déploiement physique sur le terrain(une journée)</h4> 
+<p>
+  Pour le déploiement des équipements sur site, mon équipe et moi avons installé les switchs dans les baies des différents locaux techniques 
+  et réalisé les cheminements optiques pour interconnecter les équipements. 
+  Sur cette phase, j'étais principalement autonome sur la validation de configuration, 
+  tandis que nous travaillions en équipe sur l'installation physique pour accélérer le déploiement.
+</p>
+
+      <h3>Incident réel & résolution (diagnostic)</h3>
+      <p>
+        Lors de la configuration du switch principal j'ai rencontré assez rapidement une erreur, sur le switch concentrateur, les ports ne voulaient pas monter. Après analyse des interfaces du switch j'ai remarqué que la vitesse configurée sur les
+        <span class="inline-code">interface-group</span> Aruba et la vitesse réelle des modules SFP+ étaient différentes.
+        J’ai consulté la documentation constructeur et pris conseil auprès des experts, puis corrigé la configuration et validé la mise en service.
+      </p>
+
+      <div class="code-block" aria-label="Extrait technique anonymisé">
+        <div class="code-title">Extrait (anonymisé) — cohérence interface-group / SFP</div>
+        <pre><code>system interface-group &lt;GROUP&gt; speed &lt;SPEED&gt;
+# mismatch : speed configurée "   capacité des SFP 10G
+# correction après doc + échanges experts</code></pre>
+      </div>
+      <p class="micro-note">Exemple anonymisé (noms d’équipements, sites et interfaces masqués).</p>
+    </section>
+
+
+    <section id="ac" class="card" style="margin-top:1.2rem;">
+      <h2>Apprentissages Critiques (AC) mobilisés</h2>
+
+      <div class="ac-grid" style="margin-top:1rem;">
+        <div class="ac-item">
+          <h5>AC1.03 — Configurer les fonctions de base d’un réseau local</h5>
+          <p>VLAN sonorisation, ports access/trunk, topologie en étoile, mise en service et validation des liens.</p>
+        </div>
+        <div class="ac-item">
+          <h5>AC1.05 — Diagnostiquer un dysfonctionnement réseau</h5>
+          <p>Incident de liens : analyse SFP / interface-group, doc Aruba, correction et tests de remise en service.</p>
+        </div>
+        <div class="ac-item">
+          <h5>AC4.02 — Mettre en œuvre des mécanismes de sécurisation</h5>
+          <p>Isolement complet : réseau à plat, aucun accès Internet, aucune interconnexion au réseau du chantier.</p>
+        </div>
+        <div class="ac-item">
+          <h5>AC4.03 — Sécuriser un service (disponibilité)</h5>
+          <p>Déploiement sans coupure et validation en condition réelle pour un service critique.</p>
+        </div>
+      </div>
+
+      <p class="small-muted" style="margin-top:1rem;">
+        Ressources IUT utilisées en support : VLAN / notions L2, méthode de validation, rigueur de documentation — mais l’analyse part de la mission terrain.
+      </p>
+    </section>
+
+    <section id="traces" class="card" style="margin-top:1.2rem;">
+      <h2>Traces & preuves (sélection + justification)</h2>
+
+      <div class="trace">
+        <h3>Trace 1 — Schéma du réseau sonorisation “à plat" (anonymisé)</h3>
+        <p class="small-muted">
+          Montre l’architecture réellement déployée (étoile, concentrateur, distribution, fibre monomode) et l’isolement.
+          → Prouve AC1.03 (L2) + AC4.02 (sécurisation par isolement).
+        </p>
+        <p class="micro-note">À insérer ici : image/PDF exporté (anonymisé : pas d’IP, pas de noms internes).</p>
+      </div>
+
+      <div class="trace">
+        <h3>Trace 2 — Extrait de configuration Aruba (anonymisé)</h3>
+        <p class="small-muted">
+          Extrait court (10–25 lignes) : VLAN sonorisation, trunks/access, interface-group (et correction).
+          → Prouve AC1.03 + AC1.05 (incident + résolution).
+        </p>
+        <p class="micro-note">À insérer ici : snippet anonymisé (interfaces/hostnames masqués).</p>
+      </div>
+    </section>
+
+
+    <section id="analyse" class="card" style="margin-top:1.2rem;">
+  <h2>Analyse réflexive & autoévaluation</h2>
+  
+  <p>
+    Cette mission m'a confronté à deux difficultés majeures : la transition Cisco (IUT) vers Aruba (EDF) 
+    et la contrainte de service critique sans coupure possible. La syntaxe Aruba étant différente, 
+    j'ai dû m'appuyer sur la documentation constructeur pour chaque configuration, ce qui a ralenti 
+    le déploiement initial mais m'a permis de mieux comprendre les concepts sous-jacents.
+  </p>
+
+  <h3 style="color:var(--accent);margin-top:1.2rem;">Difficultés et solutions</h3>
+  <p>
+    L'incident sur le switch concentrateur (différence de vitesse interface-group/SFP) a révélé 
+    une lacune méthodologique : j'ai diagnostiqué en partant du physique (câbles) avant 
+    d'analyser la configuration logicielle. Cette approche m'a fait perdre beaucoup de temps sur le reste de la configuration car je me suis beaucoup attardé sur un problème physique plutôt qu'un problème de configuration.
+  </p>
+  <p>
+    Le point qui m'a fait le plus progresser, c'est cet incident : ça m'a obligé à faire un diagnostic 
+    proprement, à utiliser des commandes de diagnostic (<span class="inline-code">show interface</span>, 
+    <span class="inline-code">show running config</span>, <span class="inline-code">ping</span>) et 
+    à relier matériel et configuration, et à demander de l'aide aux bonnes personnes au bon moment. 
+    Aujourd'hui je suis beaucoup plus à l'aise pour intervenir sur ce réseau parce que je l'ai mis en place et dépanné.
+  </p>
+
+  <h3 style="color:var(--accent);margin-top:1.2rem;">Axes d'amélioration</h3>
+  <p>
+    Avec le recul, je prendrais plus de temps en amont pour relire les schémas, faire des plans de configuration 
+    et déterminer les points de risque, et je cadrerais plus tôt les échanges avec les personnes concernées.
+  </p>
+  <ul style="margin-left:1.5rem;color:var(--text-secondary);line-height:1.8;">
+    <li>Prendre le temps de préparer un plan de configuration détaillé avant toutes les interventions et analyser les spécificités de l'architecture</li>
+    <li>Valider les choix techniques de configuration avec les architectes avant le début de la configuration plutôt qu'en cours de déploiement</li>
+    <li>Documenter systématiquement les incidents pour pouvoir gagner du temps sur les prochaines configurations</li>
+  </ul>
+
+  <div class="callout" style="margin-top:1rem;">
+    <strong>Auto-positionnement :</strong>
+    <ul style="margin:.6rem 0 0;">
+      <li><strong>Acquis :</strong> déploiement et diagnostic en environnement réel sous contrainte, configuration L2 autonome.</li>
+      <li><strong>En cours de consolidation :</strong> préparation en amont, documentation systématique, méthodologie de diagnostic.</li>
+      <li><strong>À développer :</strong> conception d'architecture from scratch, expertise approfondie environnement Aruba.</li>
+    </ul>
+  </div>
+
+  <div class="tags" style="margin-top:1.1rem;">
+    <a class="tag" href="missions.html">← Retour missions</a>
+    <a class="tag" href="mission-2.html">→ Mission 2</a>
+  </div>
+</section>
+
+  </div>
+
+  <footer>
+    <p>Mission 1 — Réseau sonorisation IP isolé</p>
+    <p style="margin-top:.4rem;font-size:.85rem;">© 2025-2026</p>
+  </footer>
+</body>
+</html>

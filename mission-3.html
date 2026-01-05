@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission 3 — Extension du réseau de sonorisation IP | Portfolio Romain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="entreprise.html">Entreprise</a></li>
+      <li><a class="active" href="missions.html">Missions</a></li>
+      <li><a href="bilan-global.html">Bilan général</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="container">
+    <section class="hero" style="padding-bottom:2.2rem;">
+      <div class="hero-badge">Mission 3</div>
+      <h1>Extension du réseau de sonorisation pour répondre aux nouveaux besoins du chantier</h1>
+      <p>Adaptation d'une infrastructure en exploitation en ajoutant des switchs à l'infrastructure, l'intégration en baie et la mise à jour des plans, sans interruption de service.</p>
+
+      <div class="tags">
+        <a class="tag" href="#situation">Situation</a>
+        <a class="tag" href="#realisation">Réalisation</a>
+        <a class="tag" href="#ac">AC</a>
+        <a class="tag" href="#traces">Traces</a>
+        <a class="tag" href="#analyse">Analyse</a>
+        <a class="tag" href="missions.html">← Retour missions</a>
+      </div>
+    </section>
+
+    <section id="situation" class="card">
+      <h2>Situation professionnelle, objectifs et contraintes</h2>
+      <p>
+        Dans un contexte de chantier, les bâtiments évoluent en permanence. Mon infrastructure réseau doit s'adapter aux dates de mise à disposition de ces nouveaux locaux. Cette mission concerne l'extension du réseau de sonorisation vers de nouveaux bâtiments notamment le nouveau poste d'accueil chantier (mise à disposition prévue en janvier) situé à distance des bâtiments déjà équipés. Cette mission a duré 2 semaines du 24 novembre au 5 décembre.
+      </p>
+      <p>
+        Une seconde extension a également été réalisée à la suite d'une demande d'ajout d'un équipement de sonorisation dans un bâtiment qui dépendait d'un autre bâtiment pour assurer sa sonorisation. L'objectif était d'installer un switch et d'intégrer l'équipement dans l'architecture existante.
+      </p>
+
+      <div class="callout" style="margin-top:1rem;">
+        <strong>Objectif :</strong> étendre le réseau de switchs pour pouvoir raccorder des amplificateurs nécessaires pour connecter les haut-parleurs des nouveaux bâtiments.
+        <br/>
+        <strong>Contraintes :</strong> aucune coupure possible (système critique), délai fin janvier, coordination avec les plans et approvisionnement (2 switchs + modules SFP).
+      </div>
+    </section>
+
+    <section id="realisation" class="card" style="margin-top:1.2rem;">
+      <h2>Réalisation technique (préparation, intégration et tests)</h2>
+
+      <h3 style="margin-top:.6rem;">Préparation et approvisionnement</h3>
+      <p>
+        Les nouveaux locaux techniques étant construits récemment, il n'y avait pas d'infrastructure en place au départ. J'ai dû anticiper le besoin matériel en effectuant une commande auprès de notre fournisseur, deux nouveaux switchs et des modules SFP pour pouvoir les interconnecter en fibre puis organiser l'intégration avec les architectes afin de maintenir des plans à jour et cohérents avec ce que nous avons sur site.
+      </p>
+
+      <h3>Configuration et intégration réseau</h3>
+      <p>
+        La configuration a été réalisée en autonomie, j'ai commencé par préparer la configuration en amont grâce aux plans fournis par les architectes, ici j'ai pris le temps d'étudier la nouvelle infrastructure, de préparer mes configurations en amont pour par la suite pouvoir directement les déployer. La configuration concernait le paramétrage des ports et l'intégration de ces ports dans les VLAN existants. J'ai réutilisé le VLAN créé en première année, et mis en place les ports nécessaires en mode trunk pour l'interconnexion avec le switch concentrateur. Toute cette configuration s'est effectuée en CLI avec l'outil PuTTY.
+      </p>
+      <p>
+        Les switchs ont ensuite été installés dans les baies des nouveaux locaux techniques. J'ai été accompagné sur site pour la partie installation en baie et cheminement optique mais la réflexion sur la configuration, la configuration et la validation restaient sous ma responsabilité.
+      </p>
+
+      <h3>Validation sans interruption de service</h3>
+      <p>
+        La contrainte principale étant l'absence de coupure possible, j'ai procédé par étapes : raccordement, vérifications de base, puis tests de connectivité depuis le switch concentrateur. Concrètement, après câblage, j'ai vérifié l'accessibilité des nouveaux switchs via des <strong>tests de ping</strong> et des contrôles de cohérence, en documentant les résultats.
+      </p>
+    </section>
+
+   <section id="ac" class="card" style="margin-top:1.2rem;">
+  <h2>Apprentissages Critiques (AC) mobilisés</h2>
+  <p class="small-muted">
+    Cette mission d'extension réseau mobilise des AC de semestre 3, correspondant aux compétences 
+    RT1 (Administrer les réseaux) et RT2 (Connecter les entreprises) de niveau 2.
+  </p>
+
+  <div class="ac-grid" style="margin-top:1rem;">
+    <div class="ac-item">
+      <h5>AC21.04 — Déployer des services réseaux avancés</h5>
+      <p>
+        Extension du service de sonorisation vers de nouveaux locaux techniques : configuration autonome des switchs : ajout du VLAN de sonorisation, mise en mode trunk/access de certains ports, raccordement fibre et validation de la connectivité sans interruption du service critique.
+      </p>
+    </div>
+    
+    <div class="ac-item">
+      <h5>AC22.02 — Mettre en place un accès distant sécurisé</h5>
+      <p>
+        Configuration à distance via SSH (PuTTY) des nouveaux équipements réseau, réutilisation du VLAN sonorisation isolé créé en Mission 1, maintien de l'accès SSH pour la configuration à distance.
+      </p>
+    </div>
+    
+    <div class="ac-item">
+      <h5>AC21.06 — Travailler en équipe pour développer ses compétences professionnelles</h5>
+      <p>
+        Coordination avec plusieurs interlocuteurs. En premier lieu le fournisseur pour la commande du matériel en amont pour éviter de perdre du temps sur cette partie, ensuite les architectes réseau pour la validation des choix techniques et la mise à jour des plans puis l'équipe technique locale pour l'installation physique en baie et pour les raccordements au réseau. Gestion autonome de la partie configuration et validation.
+      </p>
+    </div>
+  </div>
+
+  <p class="small-muted" style="margin-top:1rem;">
+    <strong>Lien avec la formation IUT :</strong> Les connaissances sur VLAN, trunking et topologies réseau acquises en première année sont consolidées ici avec des contraintes professionnelles : service critique, date de mise à disposition fixe (fin janvier), coordination de plusieurs interlocuteurs et la gestion autonome du projet technique.
+  </p>
+</section>
+
+    <section id="traces" class="card" style="margin-top:1.2rem;">
+      <h2>Traces & preuves (sélection justifiée)</h2>
+      <p>
+        Les preuves associées à cette mission visent à démontrer l'extension réalisée, la validation en conditions réelles et l'effort de documentation.
+      </p>
+
+      <div class="trace">
+        <h3>Trace 1 — Tableau de tests (ping / validations)</h3>
+        <p class="small-muted">
+          Fichier Excel recensant les tests de reachability effectués depuis le switch concentrateur après raccordement des nouveaux switchs.
+        </p>
+      </div>
+
+      <div class="trace">
+        <h3>Trace 2 — Mise à jour des plans / échanges avec architectes</h3>
+        <p class="small-muted">
+          Éléments montrant l'adaptation des plans d'architecture et la cohérence avec l'existant lors de l'extension.
+        </p>
+      </div>
+    </section>
+
+    <section id="analyse" class="card" style="margin-top:1.2rem;">
+      <h2>Analyse réflexive & autoévaluation</h2>
+      <p>
+        Cette mission m'a confronté à un problème de gestion du temps et de priorisation. Je devais étendre le réseau vers de nouveaux bâtiments avec une deadline fixe tout en assurant la continuité de service. Par rapport aux missions précédentes, j'ai mieux anticipé la préparation (commande matériel, coordination plans avec architectes), mais j'ai sous-estimé la charge globale.
+      </p>
+
+      <h3 style="color:var(--accent);margin-top:1.2rem;">Erreur d'estimation de charge</h3>
+      <p>
+        Ayant déjà déployé 7 switchs en Mission 1, j'ai considéré que l'extension avec 2 switchs supplémentaires serait rapide, j'ai donc décidé de ne pas prioriser cette tâche. Sauf qu'en parallèle d'autres tâches, la configuration de ces switchs a finalement mobilisé plus de temps que prévu, ce qui a décalé l'ensemble de mon planning.
+      </p>
+
+      <p>
+        <strong>Conséquences :</strong> À l'approche de la date de mise à disposition, j'ai dû accélérer le déploiement. J'ai réussi à livrer dans les délais, mais la documentation technique n'a pas été réalisée avec la même rigueur que la normale. Cette situation m'a montré qu'une activité qui est maîtrisée techniquement nécessite quand même un temps de réalisation qu'il faut anticiper.
+      </p>
+
+      <p>
+        Cette mission renforce encore mon autonomie car j'ai mené la configuration et la validation sans dépendre d'autres personnes, en documentant les tests et en prenant des initiatives adaptées au contexte. Elle consolide ce que j'ai pu acquérir comme compétences lors des missions précédentes, notamment sur la maîtrise de la configuration des switchs, des VLAN et de la mise à jour d'une infrastructure en fonction du contexte.
+      </p>
+
+      <h3 style="color:var(--accent);margin-top:1.2rem;">Axes d'amélioration</h3>
+      <p>
+        Avec le recul, j'aurais dû donner un temps dédié à cette mission dès le début, sans prendre en compte le fait que je savais et j'avais déjà la technique pour le réaliser. La maîtrise technique d'une tâche ne réduit pas obligatoirement son temps de réalisation.
+      </p>
+      <ul style="margin-left:1.5rem;color:var(--text-secondary);line-height:1.8;">
+        <li>Planifier le temps nécessaire en fonction des échéances et pas en fonction de la difficulté technique</li>
+        <li>Bloquer des créneaux dédiés pour chaque tâche sans exception</li>
+        <li>Documenter au fil de la réalisation plutôt qu'en fin de mission pour éviter de donner un livrable de moins bonne qualité en cas de contrainte de temps</li>
+      </ul>
+
+      <div class="callout" style="margin-top:1rem;">
+        <strong>Auto-positionnement :</strong>
+        <ul style="margin:.6rem 0 0;">
+          <li><strong>Acquis :</strong> extension réseau en production, préparation en amont, coordination de plusieurs acteurs (fournisseur, architectes).</li>
+          <li><strong>En cours de consolidation :</strong> estimation de la charge de travail, gestion des priorités des différentes tâches qui me sont confiées.</li>
+          <li><strong>À développer :</strong> gestion en parallèle de plusieurs tâches sans sous-estimation de celles que je maîtrise techniquement.</li>
+        </ul>
+      </div>
+
+      <div class="tags" style="margin-top:1.1rem;">
+        <a class="tag" href="mission-2.html">← Mission 2</a>
+        <a class="tag" href="mission-4.html">Mission 4 →</a>
+        <a class="tag" href="missions.html">Retour missions</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Mission 3 — Extension du réseau de sonorisation</p>
+    <p style="margin-top:.4rem;font-size:.85rem;">© 2025-2026</p>
+  </footer>
+</body>
+</html>

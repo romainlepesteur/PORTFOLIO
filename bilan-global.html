@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bilan global des compétences | Portfolio Romain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="entreprise.html">Entreprise</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a class="active" href="bilan-global.html">Bilan général</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="container">
+    <section class="hero" style="padding-bottom:2.2rem;">
+      <div class="hero-badge">Bilan global des compétences</div>
+      <h1>Synthèse de l'alternance et développement des compétences</h1>
+      <p>Analyse transversale des compétences BUT R&T développées à travers les missions réalisées chez EDF, avec mise en perspective formation/entreprise et projection professionnelle.</p>
+
+      <div class="tags">
+        <a class="tag" href="#competences">Compétences par compétence</a>
+        <a class="tag" href="#progression">Progression annuelle</a>
+        <a class="tag" href="#comparaison">IUT vs Entreprise</a>
+        <a class="tag" href="#projection">Projection professionnelle</a>
+      </div>
+    </section>
+
+    <!-- Tableau récapitulatif des compétences -->
+    <section id="competences" class="card">
+      <h2>1) Bilan par compétence du référentiel BUT R&T</h2>
+      <p>
+        Cette section fait le lien entre les <strong>compétences du référentiel national BUT Réseaux & Télécommunications</strong>,
+        les <strong>missions réalisées en entreprise</strong> et le <strong>niveau de maîtrise atteint</strong>.
+      </p>
+
+      <div style="margin-top:2rem;">
+        <h3 style="color:var(--primary);margin-bottom:1rem;">Compétence 1 : Administrer les réseaux et l'Internet</h3>
+        
+        <div class="competence-detail">
+          <h4>AC 1.02 — Concevoir et faire évoluer une architecture réseau</h4>
+          <p><strong>Missions concernées :</strong> Mission 2 (Renforcement robustesse), Mission 3 (Extension réseau)</p>
+          <p><strong>Ce qui a été fait :</strong></p>
+          <ul>
+            <li>Analyse de l'architecture existante du réseau de sonorisation IP (topologie en étoile, switchs de distribution)</li>
+            <li>Identification des points de fragilité (liaisons fibre simples, risque de coupure)</li>
+            <li>Proposition et mise en œuvre d'une architecture redondée (liaisons multiples, STP)</li>
+            <li>Extension de l'architecture vers 2 nouveaux bâtiments avec maintien de la cohérence globale</li>
+          </ul>
+          <p><strong>Niveau atteint :</strong> <span class="inline-code">Intermédiaire - Autonome sous validation architecte</span></p>
+          <p class="small-muted">
+            Je suis capable d'analyser une architecture existante, d'identifier ses limites et de proposer des évolutions
+            en tenant compte des contraintes réelles (exploitation locale, service critique, délais).
+            Les choix d'architecture sont validés avec les architectes réseau mais l'analyse et la mise en œuvre sont autonomes.
+          </p>
+        </div>
+
+        <div class="competence-detail">
+          <h4>AC 1.03 — Configurer les fonctions de base d'un réseau local</h4>
+          <p><strong>Missions concernées :</strong> Mission 1, Mission 2, Mission 3</p>
+          <p><strong>Ce qui a été fait :</strong></p>
+          <ul>
+            <li>Configuration VLAN dédié sonorisation sur switchs Aruba (access/trunk ports)</li>
+            <li>Mise en place de liaisons fibre monomode 10G (configuration interface-group)</li>
+            <li>Activation et configuration du Spanning Tree Protocol pour gérer les boucles L2</li>
+            <li>Configuration de ports, interconnexions et validation de la cohérence L2</li>
+            <li>Intégration de nouveaux équipements dans l'infrastructure existante sans coupure</li>
+          </ul>
+          <p><strong>Niveau atteint :</strong> <span class="inline-code">Maîtrise solide - Autonome complet</span></p>
+          <p class="small-muted">
+            Je configure des switchs L2/L3 de manière autonome en environnement Aruba (après avoir travaillé sur Cisco à l'IUT).
+            Je sais gérer VLAN, trunks, STP, et je peux intervenir en production sur un service critique sans supervision directe.
+            Les 3 missions m'ont permis de passer d'une configuration assistée (Mission 1) à une autonomie complète (Mission 3).
+          </p>
+        </div>
+
+        <div class="competence-detail">
+          <h4>AC 1.05 — Diagnostiquer un dysfonctionnement réseau</h4>
+          <p><strong>Missions concernées :</strong> Mission 1 (incident SFP/interface-group), Mission 2 (tests de coupure)</p>
+          <p><strong>Ce qui a été fait :</strong></p>
+          <ul>
+            <li>Diagnostic d'un incident de liens optiques ne montant pas (symptômes : ports down malgré SFP insérés)</li>
+            <li>Analyse méthodique : observation LEDs, commandes show interface, vérification SFP, consultation doc constructeur</li>
+            <li>Identification de la cause : mismatch de vitesse entre configuration interface-group (1G) et capacité SFP (10G)</li>
+            <li>Correction testée puis déployée, validation par tests de connectivité</li>
+            <li>Tests de coupure fibre pour valider le comportement STP en cas de panne</li>
+          </ul>
+          <p><strong>Niveau atteint :</strong> <span class="inline-code">Intermédiaire - Autonome avec support expert</span></p>
+          <p class="small-muted">
+            Je suis capable de diagnostiquer méthodiquement un dysfonctionnement L2, en utilisant les outils CLI,
+            la documentation constructeur et en identifiant les causes. Pour des incidents plus complexes,
+            je sais quand demander un support expert et comment documenter le problème pour faciliter l'escalade.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;">
+        <h3 style="color:var(--primary);margin-bottom:1rem;">Compétence 2 : Connecter les entreprises et les usagers</h3>
+        
+        <div class="competence-detail">
+          <h4>AC 2.01 — Assurer l'intégration, le déploiement et la continuité de service</h4>
+          <p><strong>Missions concernées :</strong> Mission 1, Mission 3</p>
+          <p><strong>Ce qui a été fait :</strong></p>
+          <ul>
+            <li>Installation physique de switchs en baie dans les locaux techniques</li>
+            <li>Raccordements fibre monomode et cheminements optiques</li>
+            <li>Intégration des équipements dans l'infrastructure sans interruption de service (contrainte critique)</li>
+            <li>Validation progressive : tests de connectivité, vérification reachability, mise en service contrôlée</li>
+          </ul>
+          <p><strong>Niveau atteint :</strong> <span class="inline-code">Intermédiaire - Accompagné sur le physique, autonome sur la validation</span></p>
+          <p class="small-muted">
+            Je participe à l'installation physique avec accompagnement (baie, cheminements), mais je gère de manière autonome
+            la validation réseau et la mise en service. Je sais organiser les étapes pour garantir la continuité de service
+            sur un système critique.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;">
+        <h3 style="color:var(--primary);margin-bottom:1rem;">Compétence 4 : Sécuriser les réseaux, les services et les données</h3>
+        
+        <div class="competence-detail">
+          <h4>AC 4.02 — Mettre en œuvre des mécanismes de sécurisation du réseau</h4>
+          <p><strong>Missions concernées :</strong> Mission 1 (isolation complète du réseau)</p>
+          <p><strong>Ce qui a été fait :</strong></p>
+          <ul>
+            <li>Isolation complète du réseau de sonorisation suite à identification de vulnérabilités</li>
+            <li>Création d'un réseau "à plat" dédié : aucun accès Internet, aucune interconnexion avec les autres réseaux EDF</li>
+            <li>Configuration garantissant l'étanchéité : pas de route, pas de gateway, réseau physiquement séparé</li>
+            <li>Validation de l'isolation avant remise en service</li>
+          </ul>
+          <p><strong>Niveau atteint :</strong> <span class="inline-code">Intermédiaire - Compréhension des principes, mise en œuvre sous validation</span></p>
+          <p class="small-muted">
+            Je comprends les principes de segmentation et d'isolation réseau. J'ai mis en œuvre une solution d'isolation complète
+            répondant à une problématique de sécurité identifiée, en respectant les contraintes (pas de coupure de service).
+            Les choix de sécurisation sont validés par les équipes cyber mais la mise en œuvre technique est autonome.
+          </p>
+        </div>
+
+        <div class="competence-detail">
+          <h4>AC 4.03 — Assurer la disponibilité, l'intégrité et la confidentialité des services informatiques et des données</h4>
+          <p><strong>Missions concernées :</strong> Mission 1, Mission 2, Mission 3</p>
+          <p><strong>Ce qui a été fait :</strong></p>
+          <ul>
+            <li>Déploiement du réseau isolé sans interruption du service de sonorisation (disponibilité maintenue à 100%)</li>
+            <li>Renforcement de la robustesse : redondance fibre + STP pour tolérer les coupures physiques</li>
+            <li>Extension du réseau avec procédures de mise en service progressives et testées</li>
+            <li>Toutes les interventions réalisées sans coupure de service sur un système critique</li>
+          </ul>
+          <p><strong>Niveau atteint :</strong> <span class="inline-code">Intermédiaire à Avancé - Conscience forte de la criticité</span></p>
+          <p class="small-muted">
+            J'ai intégré la notion de disponibilité comme contrainte absolue. Je sais préparer, tester et déployer
+            des évolutions sur un service critique sans interruption. Je comprends les compromis entre robustesse maximale
+            et simplicité d'exploitation, et je sais arbitrer en fonction du contexte.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progression dans l'année -->
+    <section id="progression" class="card" style="margin-top:1.2rem;">
+      <h2>2) Progression observée au fil de l'alternance</h2>
+      <p>
+        Cette section présente l'évolution concrète de mon autonomie, de ma méthode et de ma capacité d'intervention
+        entre le début et la fin de l'année d'alternance.
+      </p>
+
+      <div class="callout" style="margin-top:1.5rem;">
+        <strong>Tableau comparatif : Mission 1 (début d'année) vs Mission 3 (fin d'année)</strong>
+      </div>
+
+      <table class="comparison-table" style="margin-top:1rem;">
+        <thead>
+          <tr>
+            <th style="width:25%;">Aspect</th>
+            <th style="width:35%;">Mission 1 (Septembre 2024)</th>
+            <th style="width:40%;">Mission 3 (Décembre 2024-Janvier 2025)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Niveau d'autonomie</strong></td>
+            <td>60% — Besoin d'accompagnement pour le diagnostic de l'incident SFP, validation systématique avec le tuteur</td>
+            <td>90% — Gestion complète du projet d'extension (préparation, config, tests, mise en service) avec validation finale uniquement</td>
+          </tr>
+          <tr>
+            <td><strong>Préparation en amont</strong></td>
+            <td>Faible — Configuration directe sur les switchs, plusieurs allers-retours pour corrections</td>
+            <td>Forte — Pré-configuration préparée en amont, fichier de config testé, déploiement en une seule intervention</td>
+          </tr>
+          <tr>
+            <td><strong>Temps de configuration</strong></td>
+            <td>~2 jours par switch (avec corrections et retours)</td>
+            <td>~4h par switch (grâce à la préparation)</td>
+          </tr>
+          <tr>
+            <td><strong>Nombre d'erreurs</strong></td>
+            <td>3 corrections nécessaires (VLAN tagging, ports mal configurés)</td>
+            <td>Aucune correction, déploiement du premier coup</td>
+          </tr>
+          <tr>
+            <td><strong>Documentation</strong></td>
+            <td>Documentation réalisée après coup, incomplète</td>
+            <td>Documentation préparée en amont, mise à jour des plans avec les architectes</td>
+          </tr>
+          <tr>
+            <td><strong>Gestion des imprévus</strong></td>
+            <td>Incident SFP : diagnostic avec aide du tuteur, consultation doc ensemble</td>
+            <td>Aucun imprévu majeur grâce à la préparation et aux tests progressifs</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:2rem;">
+        <h3 style="color:var(--accent);margin-bottom:.8rem;">Analyse de la progression</h3>
+        <p>
+          Entre septembre 2024 et janvier 2025, ma capacité d'intervention sur le réseau de sonorisation IP s'est significativement améliorée.
+          La progression principale concerne <strong>la méthodologie</strong> : j'ai appris à préparer en amont plutôt que de "foncer"
+          directement en production.
+        </p>
+        <p>
+          Le passage de 3 allers-retours (Mission 1) à un déploiement du premier coup (Mission 3) démontre cette évolution.
+          J'ai aussi gagné en rapidité : ce qui me prenait 2 jours en début d'année me prend désormais 4h,
+          car je sais exactement quoi configurer et comment valider.
+        </p>
+        <p>
+          La Mission 2 a été un tournant : elle m'a obligé à réfléchir en termes d'architecture globale et pas seulement
+          de configuration technique. C'est à partir de ce moment que j'ai commencé à anticiper les impacts,
+          à documenter mes choix et à penser "exploitation" dès la conception.
+        </p>
+      </div>
+    </section>
+
+    <!-- Comparaison IUT vs Entreprise -->
+    <section id="comparaison" class="card" style="margin-top:1.2rem;">
+      <h2>3) Mise en perspective : formation IUT vs réalité entreprise</h2>
+      <p>
+        Cette section compare ce qui a été appris en formation et ce qui a été vécu en entreprise,
+        en identifiant les complémentarités et les écarts.
+      </p>
+
+      <div style="margin-top:1.5rem;">
+        <h3 style="color:var(--primary);margin-bottom:.8rem;">Ce que l'IUT m'a apporté (fondations théoriques)</h3>
+        <ul style="color:var(--text-secondary);line-height:1.8;margin-left:1.2rem;">
+          <li><strong>Modèle OSI et protocoles L2/L3</strong> : Compréhension du fonctionnement des VLAN, du STP, du routage</li>
+          <li><strong>Configuration Cisco</strong> : Bases de la CLI, commandes show, logique de configuration par interface</li>
+          <li><strong>Méthodologie de diagnostic</strong> : Approche systématique (observer → analyser → tester → corriger)</li>
+          <li><strong>Redondance et haute disponibilité</strong> : Principes théoriques (agrégation de liens, protocoles de redondance)</li>
+          <li><strong>Sécurité réseau</strong> : Notions de segmentation, d'isolation, de principe du moindre privilège</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <h3 style="color:var(--accent);margin-bottom:.8rem;">Ce que l'entreprise m'a appris (réalité opérationnelle)</h3>
+        <ul style="color:var(--text-secondary);line-height:1.8;margin-left:1.2rem;">
+          <li><strong>Contrainte de disponibilité absolue</strong> : À l'IUT on peut "casser" et recommencer, en entreprise il faut que ça marche du premier coup sur un service critique</li>
+          <li><strong>Adaptation matérielle</strong> : Passage de Cisco (IUT) à Aruba (EDF) → réappropriation des commandes, de la logique, de la documentation constructeur</li>
+          <li><strong>Exploitation locale sans télé-gestion</strong> : Contrainte non vue à l'IUT, oblige à tout préparer car pas de retour arrière à distance</li>
+          <li><strong>Arbitrages techniques réels</strong> : Choix entre "solution la plus robuste" et "solution la plus exploitable dans notre contexte" → compromis permanent</li>
+          <li><strong>Coordination multi-acteurs</strong> : Architectes, équipes cyber, prestataires, métiers → savoir à qui s'adresser, quand, et comment justifier ses choix</li>
+          <li><strong>Documentation opérationnelle</strong> : Pas juste un compte-rendu de TP, mais une doc qui servira à d'autres pour exploiter/maintenir</li>
+        </ul>
+      </div>
+
+      <div class="callout" style="margin-top:2rem;">
+        <strong>Synthèse :</strong> L'IUT m'a donné les outils techniques, l'entreprise m'a appris à les utiliser
+        dans un contexte contraint, avec des responsabilités réelles et des impacts immédiats.
+        Les deux sont complémentaires et indispensables.
+      </div>
+    </section>
+
+    <!-- Projection professionnelle -->
+    <section id="projection" class="card" style="margin-top:1.2rem;">
+      <h2>4) Projection professionnelle et suite du parcours</h2>
+      <p>
+        Cette section présente mes objectifs professionnels à court et moyen terme,
+        en lien avec les compétences développées pendant l'alternance.
+      </p>
+
+      <div style="margin-top:1.5rem;">
+        <h3 style="color:var(--primary);margin-bottom:.8rem;">Orientation : Réseau + Cybersécurité</h3>
+        <p>
+          Mon objectif est de me diriger vers des métiers à l'intersection entre <strong>réseau</strong> et <strong>cybersécurité</strong>.
+          Les missions réalisées chez EDF m'ont conforté dans cette direction : j'ai vu concrètement comment les choix d'architecture réseau
+          impactent la sécurité, et comment il faut penser les deux ensemble dès la conception.
+        </p>
+        <p>
+          La Mission 1 (isolation réseau suite à des vulnérabilités) m'a particulièrement marqué :
+          c'est typiquement le genre de situation où il faut comprendre à la fois les enjeux réseau (disponibilité, exploitation)
+          et les enjeux cyber (isolation, réduction de la surface d'attaque).
+        </p>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <h3 style="color:var(--accent);margin-bottom:.8rem;">Objectifs à court terme (6-12 mois)</h3>
+        <ul style="color:var(--text-secondary);line-height:1.8;margin-left:1.2rem;">
+          <li><strong>Renforcer ma maîtrise technique réseau</strong> : Approfondir les architectures haute disponibilité, le routage avancé, les architectures multi-sites</li>
+          <li><strong>Monter en compétence sur la partie "production-grade"</strong> : Procédures, tests, exploitation, documentation niveau professionnel</li>
+          <li><strong>Découvrir d'autres environnements réseau</strong> : Datacenters, architectures cloud, réseaux télécoms (si possible via stages ou projets)</li>
+          <li><strong>Commencer à me former sur la sécurité réseau</strong> : Firewalls, segmentation avancée (micro-segmentation), détection d'intrusion</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <h3 style="color:var(--accent);margin-bottom:.8rem;">Objectifs à moyen terme (2-3 ans)</h3>
+        <ul style="color:var(--text-secondary);line-height:1.8;margin-left:1.2rem;">
+          <li><strong>Poursuivre en Master ou école d'ingénieur</strong> : Spécialisation cybersécurité des systèmes et réseaux</li>
+          <li><strong>Viser des postes d'expertise</strong> : Architecte réseau sécurisé, ingénieur sécurité des infrastructures, pentester réseau</li>
+          <li><strong>Obtenir des certifications professionnelles</strong> : CCNA/CCNP (Cisco) ou équivalent Aruba, certifications sécurité (CEH, OSCP à terme)</li>
+          <li><strong>Développer une vision "sécurité by design"</strong> : Intégrer la sécurité dès la conception des architectures, pas en correction après coup</li>
+        </ul>
+      </div>
+
+      <div class="callout" style="margin-top:2rem;">
+        <strong>Ce que l'alternance m'a confirmé :</strong> 
+        J'aime les environnements où les enjeux sont réels, où il faut arbitrer entre des contraintes fortes,
+        et où les choix techniques ont un impact direct. Les environnements industriels critiques (comme EDF)
+        ou les infrastructures sensibles (finance, santé, télécoms) correspondent à ce que je recherche.
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="card" style="margin-top:1.2rem;border-left:5px solid var(--accent);">
+      <h2>Conclusion du bilan</h2>
+      <p>
+        Cette année d'alternance chez EDF m'a permis de développer des compétences techniques solides en administration réseau,
+        tout en découvrant la réalité opérationnelle d'un environnement industriel critique.
+      </p>
+      <p>
+        Au-delà des compétences techniques, j'ai surtout appris <strong>la méthode</strong> : préparer, anticiper, tester, documenter.
+        J'ai compris que la technique ne suffit pas, il faut aussi savoir s'adapter au contexte, coordonner avec les bonnes personnes,
+        et prendre des décisions responsables quand le service ne doit pas s'arrêter.
+      </p>
+      <p>
+        Les trois missions réalisées forment une progression cohérente : mise en place d'une infrastructure (Mission 1),
+        amélioration de sa robustesse (Mission 2), extension pour répondre aux besoins (Mission 3).
+        Cette progression reflète aussi mon évolution : de la découverte du terrain à l'autonomie opérationnelle.
+      </p>
+      <p style="margin-bottom:0;">
+        Je suis maintenant prêt à aller plus loin, à approfondir mes compétences réseau et à les enrichir
+        d'une dimension cybersécurité, pour devenir un professionnel capable de concevoir, sécuriser et exploiter
+        des infrastructures réseau dans des environnements critiques.
+      </p>
+
+      <div class="tags" style="margin-top:1.5rem;">
+        <a class="tag" href="missions.html">← Retour aux missions</a>
+        <a class="tag" href="index.html">← Retour accueil</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Bilan global des compétences — Portfolio d'alternance BUT R&T</p>
+    <p style="margin-top:.4rem;font-size:.85rem;">© 2025-2026</p>
+  </footer>
+
+  <style>
+    /* Styles spécifiques pour le bilan global */
+    .competence-detail {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .competence-detail h4 {
+      color: var(--primary-dark);
+      margin: 0 0 0.8rem;
+      font-size: 1.1rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .competence-detail p {
+      margin-bottom: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .competence-detail ul {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .competence-detail ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: var(--bg-card);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px var(--shadow-sm);
+    }
+
+    .comparison-table thead {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+    }
+
+    .comparison-table th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .comparison-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table tbody tr:hover {
+      background: var(--bg-elevated);
+    }
+
+    .comparison-table td:first-child {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  </style>
+</body>
+</html>

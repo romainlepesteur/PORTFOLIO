@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission 2 — Renforcement de la robustesse du réseau de sonorisation IP | Portfolio Romain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="entreprise.html">Entreprise</a></li>
+      <li><a class="active" href="missions.html">Missions</a></li>
+      <li><a href="bilan-global.html">Bilan général</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="container">
+    <section class="hero" style="padding-bottom:2.2rem;">
+      <div class="hero-badge">Mission 2</div>
+      <h1>Renforcement de la robustesse du réseau de sonorisation IP</h1>
+      <p>Amélioration ciblée de la disponibilité d'un réseau critique en environnement chantier, sous fortes contraintes d'exploitation.</p>
+
+      <div class="tags">
+        <a class="tag" href="#situation">Situation</a>
+        <a class="tag" href="#realisation">Réalisation</a>
+        <a class="tag" href="#ac">AC</a>
+        <a class="tag" href="#traces">Traces</a>
+        <a class="tag" href="#analyse">Analyse</a>
+        <a class="tag" href="missions.html">← Retour missions</a>
+      </div>
+    </section>
+
+    <section id="situation" class="card">
+      <h2>Situation professionnelle, objectifs et contraintes</h2>
+      <p>
+        J'ai pu réaliser cette mission durant ma deuxième année d'alternance, dans la continuité de la mise en place du réseau de sonorisation isolé. Cette mission a duré 2 semaines du 27 octobre 2025 au 7 novembre 2025. Lors de plusieurs réflexions avec mon équipe un problème principal nous est survenu. Le réseau était fonctionnel, mais son architecture était vulnérable à des incidents physiques en particulier les coupures de fibre optique ce qui est assez fréquent sur un chantier. Durant cette mission j'ai été amené à travailler avec l'équipe d'architectes réseau pour proposer et valider les choix techniques. Le déploiement des 7 nouvelles fibres a été réalisé en équipe avec 2 techniciens de notre équipe.
+      </p>
+      <p>
+        La sonorisation restant un système critique, nous ne pouvons pas nous permettre qu'il y ait une interruption de service due à cette problématique.
+        L'objectif était donc d'améliorer la robustesse du réseau existant, sans détériorer son fonctionnement et sans engager des investissements lourds car une bascule du système vers le réseau EDF étant envisagée à court terme car les failles de cybersécurité ont été corrigées.
+      </p>
+
+      <div class="callout" style="margin-top:1rem;">
+        <strong>Objectif :</strong> renforcer la disponibilité du réseau de sonorisation face aux coupures physiques des fibres.
+        <br/><strong>Contraintes :</strong> exploitation locale (sans télé-exploitation), réseau critique en production, délai limité et solution temporaire.
+      </div>
+    </section>
+
+    <section id="realisation" class="card" style="margin-top:1.2rem;">
+  <h2>Réalisation technique (analyse et mise en œuvre)</h2>
+
+  <h3 style="margin-top:.6rem;">Analyse de l'architecture de base</h3>
+  
+  <h4>Constat initial</h4>
+  <p>
+    L'architecture de base reposait sur un switch concentrateur et 7 switchs de distribution raccordés
+    par des liaisons fibre simples, 1 lien par switch. Cette topologie répondait aux besoins du chantier mais présentait un point critique, en cas de coupure d'une fibre, le switch concerné perdait toute connexion avec le reste du réseau.
+  </p>
+  
+  <h4>Objectif d'amélioration</h4>
+  <p>
+    L'objectif était de trouver une solution pour augmenter la disponibilité du réseau face aux coupures sans trop le compliquer pour l'exploitation et sans engager de frais importants, car la bascule du réseau à plat vers le réseau EDF est prévue prochainement.
+  </p>
+
+  <h3>Solutions étudiées</h3>
+  
+  <h4>Options techniques envisagées</h4>
+  <p>
+    Lors de mes échanges avec les architectes réseau, plusieurs options ont été étudiées :
+  </p>
+  <ul style="margin-left:1.5rem;">
+    <li>Agrégation de liens (LACP) : nécessite des modules SFP supplémentaires, beaucoup de fibres supplémentaires et une configuration avancée</li>
+    <li>Ajout d'un second switch concentrateur : doublement du coût matériel</li>
+    <li>Redondance complète des chemins : complexité d'exploitation importante</li>
+  </ul>
+  <p>
+    Ces solutions ajoutaient une complexité de mise en place et d'exploitation ainsi qu'un besoin matériel important.
+  </p>
+  
+  <h4>Choix retenu : redondance simple avec Spanning Tree</h4>
+  <p>
+    Le fait que je devais trouver une solution temporaire en attendant la bascule, et que l'exploitation de ce réseau reposait principalement sur moi, le choix a été fait de privilégier une solution simple à mettre en place et qui ajoute de la robustesse au réseau.
+  </p>
+  <p>
+    <strong>Solution retenue :</strong> redondance des liens avec activation du Spanning Tree Protocol (STP). Chaque switch est connecté avec un lien vers le switch concentrateur ET un deuxième lien vers un switch voisin, créant volontairement des boucles L2 que le STP gère automatiquement.
+  </p>
+
+  <h3>Mise en place de la redondance</h3>
+  
+  <h4>Phase 1 : Ajout des liaisons fibre redondantes (3 jours)</h4>
+  <p>
+    Nous avons déployé 7 nouvelles liaisons fibre optique pour créer les chemins redondants :
+  </p>
+  <ul style="margin-left:1.5rem;">
+    <li>Chaque switch de distribution a une liaison principale vers le concentrateur</li>
+    <li>Chaque switch ajoute une liaison secondaire vers un switch voisin</li>
+  </ul>
+  
+  <h4>Phase 2 : Configuration du Spanning Tree</h4>
+  <p>
+    Pour la configuration du Spanning Tree pour éviter les boucles de niveau 2 j'ai utilisé SSH via PuTTY sur chaque switch Aruba. J'ai dû activer le Spanning Tree Protocol par défaut des équipements. Le choix du STP standard au RSTP a été obligé car le matériel ne proposait que cette option.
+  </p>
+  
+  <div class="code-block" aria-label="Extrait configuration STP">
+    <div class="code-title">Extrait configuration STP du switch concentrateur (anonymisé)</div>
+    <pre><code># Activation globale du Spanning Tree
+
+spanning-tree STP
+spanning-tree priority 0
+</code></pre>
+<p>Ici le choix de mettre la priorité du switch concentrateur à 0 a été choisi pour faire en sorte qu'il soit systématiquement élu root bridge du Spanning Tree.</p>
+  </div>
+  <p class="micro-note">Exemple anonymisé (noms d'équipements et priorités masqués).</p>
+
+  <h3>Tests et validation</h3>
+  <p>
+	Avant le déploiement final, j'ai réalisé des tests sur 2 switchs isolés pour valider la configuration et éviter de créer une boucle mal gérée. J'ai donc configuré les deux switchs isolés avec la configuration finale puis je les ai reliés entre eux pour tester si la configuration du spanning tree était correcte
+</p>
+  <p>
+  Tests réalisés et validés :
+</p>
+<ul style="margin-left:1.5rem;">
+  <li><strong>Vérification de connectivité :</strong> ping continu depuis un équipement de sonorisation</li>
+  <li><strong>Test de coupure :</strong> débranchement physique d'une fibre</li>
+  <li><strong>Validation :</strong> vérification via <span class="inline-code">show spanning-tree</span> que le port bloqué est passé en état forwarding</li>
+</ul>
+<section id="ac" class="card" style="margin-top:1.2rem;">
+  <h2>Apprentissages Critiques (AC) mobilisés</h2>
+  <p class="small-muted">
+    Cette mission de renforcement de la robustesse réseau mobilise des AC de semestre 3, 
+    correspondant aux compétences RT1 (Administrer les réseaux) de niveau 2.
+  </p>
+
+<div class="ac-grid" style="margin-top:1rem;">
+  <div class="ac-item">
+    <h5>AC21.02 — Configurer et expliquer une politique simple de QoS et les fonctions de base de la sécurité d'un réseau</h5>
+    <p>
+      Ici j'ai pu analyser l'architecture de base pour identifier les points de fragilité qui étaient une simple liaison fibre vers le switch concentrateur et le fait qu'on ait qu'un seul switch concentrateur, proposition d'une solution de redondance avec Spanning Tree Protocol pour renforcer la disponibilité du réseau critique de sonorisation en cas de coupure d'une fibre.
+    </p>
+  </div>
+
+  <div class="ac-item">
+    <h5>AC21.04 — Déployer des services réseaux avancés</h5>
+    <p>
+      Déploiement de 7 liaisons fibre redondantes, configuration du Spanning Tree Protocol sur l'ensemble des switchs (activation STP, configuration de la priorité du root bridge), validation du comportement en cas de coupure.
+    </p>
+  </div>
+
+  <div class="ac-item">
+    <h5>AC11.05 — Identifier les dysfonctionnements du réseau local et savoir les signaler</h5>
+    <p>
+      Tests de validation du comportement STP en situation réelle : débranchement physique d'une fibre, vérification via <span class="inline-code">show spanning-tree</span> que le port bloqué passe en état forwarding, observation du temps de convergence du réseau.
+    </p>
+  </div>
+
+  <div class="ac-item">
+    <h5>AC21.06 — Travailler en équipe pour développer ses compétences professionnelles</h5>
+    <p>
+      Échanges avec les architectes réseau pour la validation des choix techniques, travail en équipe avec 2 techniciens pour le déploiement des 7 fibres optiques sur le terrain.
+    </p>
+  </div>
+</div>
+
+
+  <p class="small-muted" style="margin-top:1rem;">
+    <strong>Lien avec la formation IUT :</strong> on peut retrouver les connaissances théoriques sur le spanning tree, la redondance 
+    et la haute disponibilité acquises en première année sont appliquées ici en environnement réel avec 
+    des contraintes : service critique en production, exploitation locale, solution temporaire.
+  </p>
+</section>
+
+    <section id="traces" class="card" style="margin-top:1.2rem;">
+      <h2>Traces & preuves (sélection justifiée)</h2>
+      <p>
+        Pour cette mission, les traces retenues visent à démontrer la réflexion menée et la mise en œuvre effective
+        de la redondance, plutôt que la production de nouveaux livrables.
+      </p>
+
+      <div class="trace">
+        <h3>Trace 1 — Schéma de la topologie redondée (anonymisé)</h3>
+        <p class="small-muted">
+          Schéma mettant en évidence les chemins alternatifs entre les switchs et la gestion des boucles L2.
+        </p>
+      </div>
+
+      <div class="trace">
+        <h3>Trace 2 — Validation terrain (tests de coupure)</h3>
+        <p class="small-muted">
+          Description des tests réalisés (ping, coupure fibre) et des résultats observés.
+        </p>
+      </div>
+    </section>
+
+<section id="analyse" class="card" style="margin-top:1.2rem;">
+  <h2>Analyse réflexive & autoévaluation</h2>
+  
+  <p>
+    Cette mission m'a confronté à un nouveau défi : améliorer le réseau que j'avais moi-même déployé 
+    en Mission 1. Ici l'objectif n'était plus de livrer un système fonctionnel mais de rendre plus robuste 
+    le réseau face aux aléas du chantier, ce qui impliquait de comprendre les arbitrages techniques 
+    proposés par les architectes réseau et d'anticiper les scénarios de panne.
+  </p>
+
+  <h3 style="color:var(--accent);margin-top:1.2rem;">Difficultés rencontrées</h3>
+  <p>
+    <strong>Compréhension des solutions techniques :</strong> Lors des échanges avec les architectes réseau, 
+    plusieurs solutions ont été présentées (LACP, double concentrateur, STP). Les architectes ont finalement 
+    retenu STP pour des raisons de simplicité d'exploitation et de coût. J'ai eu du mal à comprendre 
+    pourquoi on écartait LACP alors que techniquement ça me semblait performant et pas forcément plus coûteux. 
+    Les architectes m'ont expliqué qu'en exploitation locale (sans télé-exploitation), LACP compliquait le 
+    diagnostic en cas de panne, et que le réseau serait de toute façon remplacé dans quelques mois. 
+    Ça m'a fait comprendre qu'une solution technique n'est pas choisie uniquement sur les performances, 
+    mais également sur le contexte de compétences d'exploitation et de temporalité.
+  </p>
+
+  <h3 style="color:var(--accent);margin-top:1.2rem;">Ce qui a progressé depuis Mission 1</h3>
+  <p>
+    Contrairement à Mission 1 où j'ai perdu du temps sur un diagnostic physique, ici j'ai appliqué 
+    une méthode plus rigoureuse : tests en environnement isolé avant déploiement en production. 
+    J'ai configuré 2 switchs en amont qui ne sont pas reliés au réseau, créé volontairement une boucle, 
+    et vérifié que STP la bloquait correctement avant de déployer sur les 7 switchs. Cette approche 
+    m'a permis d'éviter de créer un incident en production.
+  </p>
+  <p>
+    Aujourd'hui, je me sens plus à l'aise pour intervenir sur ce réseau, anticiper les risques 
+    et proposer des évolutions adaptées au contexte réel du site.
+  </p>
+
+  <h3 style="color:var(--accent);margin-top:1.2rem;">Axes d'amélioration</h3>
+  <ul style="margin-left:1.5rem;color:var(--text-secondary);line-height:1.8;">
+    <li>Documenter de manière plus systématique les résultats de tests (temps de convergence, comportement observé)</li>
+    <li>Approfondir ma compréhension des protocoles de redondance avancés (LACP, stacking) pour mieux comprendre les arbitrages techniques</li>
+    <li>Anticiper dès le début les besoins de transfert de connaissance pour les personnes qui reprendront le réseau</li>
+  </ul>
+
+  <div class="callout" style="margin-top:1rem;">
+    <strong>Auto-positionnement :</strong>
+    <ul style="margin:.6rem 0 0;">
+      <li><strong>Acquis :</strong> analyse d'architecture existante, mise en place de redondance L2, tests préalables en environnement isolé.</li>
+      <li><strong>En cours de consolidation :</strong> compréhension des arbitrages techniques, documentation des tests, gestion du temps.</li>
+      <li><strong>À développer :</strong> maîtrise des solutions de haute disponibilité avancées (LACP, stacking, routage redondant).</li>
+    </ul>
+  </div>
+
+  <div class="tags" style="margin-top:1.1rem;">
+    <a class="tag" href="mission-1.html">← Mission 1</a>
+    <a class="tag" href="mission-3.html">Mission 3 →</a>
+    <a class="tag" href="missions.html">Retour missions</a>
+  </div>
+</section>
+  </div>
+
+  <footer>
+    <p>Mission 2 — Robustesse du réseau de sonorisation IP</p>
+    <p style="margin-top:.4rem;font-size:.85rem;">© 2025-2026</p>
+  </footer>
+</body>
+</html>
